@@ -14,8 +14,6 @@ public class JSONUtils {
         JSONParser parser = new JSONParser();
         try {
             Object obj = parser.parse(new FileReader(path));
-
-            // A JSON object. Key value pairs are unordered. JSONObject supports java.util.Map interface.
             JSONObject jsonObject = (JSONObject) obj;
             return jsonObject;
         } catch (Exception e) {

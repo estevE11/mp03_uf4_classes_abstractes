@@ -29,6 +29,6 @@ public class Land extends Vehicle{
 
     public Land(String id) {
         super(id);
-        this.type = TYPE.LAND;
+        this.type = 'T';
     }
 }

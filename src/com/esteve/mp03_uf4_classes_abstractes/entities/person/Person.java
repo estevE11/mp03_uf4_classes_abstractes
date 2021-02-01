@@ -7,16 +7,31 @@ public class Person {
     protected String nif;
     protected String name;
     protected String birth;
-    protected Vehicle.TYPE esp;
-    protected boolean assigned = false;
+    protected char esp;
+    protected boolean assigned;
 
     public Person(String nif) {
         this.nif = nif;
+        this.assigned = false;
     }
 
-    private Person createFromJSON(JSONObject obj) {
+    public static Person createFromJSON(JSONObject obj) {
         String nif = (String) obj.get("nif");
         Person res = new Person(nif);
+        res.setName((String) obj.get("name"));
+        res.setBirth((String) obj.get("birth"));
+        res.setAssigned((boolean) obj.get("assigned"));
+        res.setEsp(((String) obj.get("esp")).charAt(0));
+        return res;
+    }
+
+    public JSONObject toJson() {
+        JSONObject res = new JSONObject();
+        res.put("nif", this.nif);
+        res.put("name", this.name);
+        res.put("birth", this.birth);
+        res.put("esp", String.valueOf(this.esp));
+        res.put("assigned", this.assigned);
         return res;
     }
 
@@ -36,11 +51,11 @@ public class Person {
         this.birth = birth;
     }
 
-    public Vehicle.TYPE getEsp() {
+    public char getEsp() {
         return esp;
     }
 
-    public void setEsp(Vehicle.TYPE esp) {
+    public void setEsp(char esp) {
         this.esp = esp;
     }
 

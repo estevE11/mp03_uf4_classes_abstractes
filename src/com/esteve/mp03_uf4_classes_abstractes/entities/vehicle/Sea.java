@@ -38,6 +38,6 @@ public class Sea extends Vehicle {
 
     public Sea(String id) {
         super(id);
-        this.type = TYPE.SEA;
+        this.type = 'S';
     }
 }

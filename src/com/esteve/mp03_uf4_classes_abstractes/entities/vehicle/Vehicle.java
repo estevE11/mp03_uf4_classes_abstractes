@@ -1,26 +1,24 @@
 package com.esteve.mp03_uf4_classes_abstractes.entities.vehicle;
 
-public class Vehicle {
-    public enum TYPE {
-        LAND('T'),
-        AIR('A'),
-        SEA('M');
-
-        char type;
-
-        TYPE(char t) {
-            this.type = t;
-        }
-    }
-
+public abstract class Vehicle {
     protected double minConsume;
     protected double currConsume;
     protected double maxCapacity;
     protected double consumeByKm;
-    protected TYPE type;
+    protected char type;
     protected String id;
     protected double avgSpeed;
     protected String personId;
+
+    public Vehicle(String id) {
+        this.id = id;
+        this.minConsume = 0;
+        this.currConsume = 0;
+        this.maxCapacity = 0;
+        this.consumeByKm = 0;
+        this.avgSpeed = 0;
+        this.personId = null;
+    }
 
     public double getMinConsume() {
         return minConsume;
@@ -54,11 +52,11 @@ public class Vehicle {
         this.consumeByKm = consumeByKm;
     }
 
-    public TYPE getType() {
+    public char getType() {
         return type;
     }
 
-    public void setType(TYPE type) {
+    public void setType(char type) {
         this.type = type;
     }
 
@@ -84,15 +82,5 @@ public class Vehicle {
 
     public void setPersonId(String personId) {
         this.personId = personId;
-    }
-
-    public Vehicle(String id) {
-        this.id = id;
-        this.minConsume = 0;
-        this.currConsume = 0;
-        this.maxCapacity = 0;
-        this.consumeByKm = 0;
-        this.avgSpeed = 0;
-        this.personId = null;
     }
 }
