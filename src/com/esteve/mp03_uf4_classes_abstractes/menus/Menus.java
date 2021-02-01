@@ -244,4 +244,38 @@ public class Menus {
         System.out.println();
     }
 
+    public void menuLink() {
+        int ipt = 0;
+        do {
+            LinkedList<Person> unasPeople = this.manager.getUnassignedPeople();
+            for(int i = 0; i < unasPeople.size(); i++) {
+                System.out.println((i+1) + ") " + unasPeople.get(i).getName());
+            }
+            System.out.print("0) Sortir");
+            System.out.print("> ");
+            ipt = sc.nextInt();
+
+            if(ipt > 0) menuLinkVehicles(unasPeople.get(ipt-1));
+
+        } while(ipt > 0);
+        System.out.println();
+    }
+
+    public void menuLinkVehicles(Person p) {
+        int ipt = 0;
+        do {
+            LinkedList<Vehicle> unasVehicles = this.manager.getUnassignedVehiclesByType(p.getEsp());
+            for(int i = 0; i < unasVehicles.size(); i++) {
+                System.out.println((i+1) + ") " + unasVehicles.get(i).getId());
+            }
+            System.out.print("0) Sortir");
+            System.out.print("> ");
+            ipt = sc.nextInt();
+
+            //Operacio assignar
+
+        } while(ipt > 0);
+        System.out.println();
+    }
+
 }

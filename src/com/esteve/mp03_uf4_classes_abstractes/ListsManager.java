@@ -70,6 +70,36 @@ public class ListsManager {
         JSONUtils.saveJson("res/save.json", toSave);
     }
 
+    public Person getPersonByNif(String nif) {
+        for (Person p : this.people) {
+            if(p.getNif().equals(nif)) return p;
+        }
+        return null;
+    }
+
+    public Vehicle getVehicleById(String id) {
+        for (Vehicle v : this.vehicles) {
+            if(v.getId().equals(id)) return v;
+        }
+        return null;
+    }
+
+    public LinkedList<Person> getUnassignedPeople() {
+        LinkedList<Person> res = new LinkedList<Person>();
+        for (Person p : this.people) {
+            if(!p.isAssigned()) res.add(p);
+        }
+        return res;
+    }
+
+    public LinkedList<Vehicle> getUnassignedVehiclesByType(char type) {
+        LinkedList<Vehicle> res = new LinkedList<Vehicle>();
+        for (Vehicle v : this.vehicles) {
+            if(v.getPersonId() == null && v.getType() == type) res.add(v);
+        }
+        return res;
+    }
+
     public void add(Person p) {
         this.people.add(p);
     }
