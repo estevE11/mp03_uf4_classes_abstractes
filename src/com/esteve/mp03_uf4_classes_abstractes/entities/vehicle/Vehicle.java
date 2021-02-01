@@ -8,7 +8,7 @@ public abstract class Vehicle {
     protected char type;
     protected String id;
     protected double avgSpeed;
-    protected String personId;
+    protected String personNif;
 
     public Vehicle(String id) {
         this.id = id;
@@ -17,7 +17,7 @@ public abstract class Vehicle {
         this.maxCapacity = 0;
         this.consumeByKm = 0;
         this.avgSpeed = 0;
-        this.personId = null;
+        this.personNif = null;
     }
 
     public double getMinConsume() {
@@ -77,10 +77,10 @@ public abstract class Vehicle {
     }
 
     public String getPersonId() {
-        return personId;
+        return personNif;
     }
 
     public void setPersonId(String personId) {
-        this.personId = personId;
+        this.personNif = personId;
     }
 }

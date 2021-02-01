@@ -51,4 +51,8 @@ public class ListsManager {
     public LinkedList<Person> getPeople() {
         return this.people;
     }
+
+    public LinkedList<Vehicle> getVehicles() {
+        return this.vehicles;
+    }
 }

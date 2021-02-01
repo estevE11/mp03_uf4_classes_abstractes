@@ -2,6 +2,9 @@ package com.esteve.mp03_uf4_classes_abstractes.menus;
 
 import com.esteve.mp03_uf4_classes_abstractes.ListsManager;
 import com.esteve.mp03_uf4_classes_abstractes.entities.person.Person;
+import com.esteve.mp03_uf4_classes_abstractes.entities.vehicle.Air;
+import com.esteve.mp03_uf4_classes_abstractes.entities.vehicle.Land;
+import com.esteve.mp03_uf4_classes_abstractes.entities.vehicle.Sea;
 import com.esteve.mp03_uf4_classes_abstractes.entities.vehicle.Vehicle;
 import jdk.swing.interop.SwingInterOpUtils;
 
@@ -54,7 +57,10 @@ public class Menus {
 
             switch (ipt) {
                 case 1:
-//                    this.menuCreatePerson();
+                    this.menuCreateVehicle();
+                    break;
+                case 2:
+                    this.printVehicles();
                     break;
                 default:
                     ipt = 0;
@@ -85,6 +91,105 @@ public class Menus {
         } while(ipt > 0);
     }
 
+    public void menuCreateVehicle() {
+        int ipt = 0;
+        do {
+            System.out.println("1) Terrestre");
+            System.out.println("2) Maritim");
+            System.out.println("3) Aeri");
+            System.out.println("0) Sortir");
+
+            System.out.print("> ");
+            ipt = sc.nextInt();
+
+            if(ipt < 4 && ipt > 0) {
+                this.createVehicle(ipt);
+            }
+        } while(ipt > 0);
+    }
+
+    public void createVehicle(int type) {
+        sc = new Scanner(System.in);
+        System.out.print("ID: ");
+        String id = sc.nextLine();
+        System.out.print("Consum minim: ");
+        double minCons = sc.nextDouble();
+        System.out.print("Consum actual: ");
+        double currCons = sc.nextDouble();
+        System.out.print("Capacitat maxima: ");
+        double maxCapacity = sc.nextDouble();
+        System.out.print("Consum/Km: ");
+        double consumeByKm = sc.nextDouble();
+        System.out.print("Mitjana de velocitat: ");
+        double avgSpeed = sc.nextDouble();
+
+        switch(type) {
+            case 1:
+                Land v;
+                System.out.print("Cavalls: ");
+                int horsePower = sc.nextInt();
+                System.out.print("Averies: ");
+                int issues = sc.nextInt();
+                System.out.print("Cost d'averies: ");
+                int issuesCost = sc.nextInt();
+
+                v = new Land(id);
+                v.setMinConsume(minCons);
+                v.setCurrConsume(currCons);
+                v.setMaxCapacity(maxCapacity);
+                v.setConsumeByKm(consumeByKm);
+                v.setAvgSpeed(avgSpeed);
+
+                v.setHorsePower(horsePower);
+                v.setIssues(issues);
+                v.setIssuesCost(issuesCost);
+                this.manager.add(v);
+                break;
+            case 2:
+                Sea s;
+                System.out.print("Eslora: ");
+                int length = sc.nextInt();
+                System.out.print("Manega: ");
+                int handle = sc.nextInt();
+                System.out.print("Any flotació: ");
+                int year = sc.nextInt();
+                System.out.print("Any flotació: ");
+                String build_date = sc.nextLine();
+
+                s = new Sea(id);
+                s.setMinConsume(minCons);
+                s.setCurrConsume(currCons);
+                s.setMaxCapacity(maxCapacity);
+                s.setConsumeByKm(consumeByKm);
+                s.setAvgSpeed(avgSpeed);
+
+                s.setLength(length);
+                s.setHandle(handle);
+                s.setYear(year);
+                s.setBuild_date(build_date);
+                this.manager.add(s);
+                break;
+            case 3:
+                Air a;
+                System.out.print("Numero de motors: ");
+                int engines = sc.nextInt();
+                System.out.print("Temps de funcionament: ");
+                int workTime = sc.nextInt();
+
+                a = new Air(id);
+                a.setMinConsume(minCons);
+                a.setCurrConsume(currCons);
+                a.setMaxCapacity(maxCapacity);
+                a.setConsumeByKm(consumeByKm);
+                a.setAvgSpeed(avgSpeed);
+
+                a.setEngines(engines);
+                a.setWorkTime(workTime);
+                this.manager.add(a);
+                break;
+        }
+    }
+
     public void menuCreatePerson() {
         Person res;
         System.out.println(". : Menu de creació d'una persona : .");
@@ -101,6 +206,7 @@ public class Menus {
 
         this.manager.add(res);
         System.out.println("Persona inserida correctement!");
+        System.out.println();
     }
 
     public void printPeople() {
@@ -108,6 +214,26 @@ public class Menus {
         for(int i = 0; i < people.size(); i++) {
             Person p = people.get(i);
             System.out.println((i+1) + ") " + p.getName() + " - " + (p.isAssigned() ? "A" : "No a") + "ssignat");
+        }
+    }
+
+    public void printVehicles() {
+        LinkedList<Vehicle> vehicles = this.manager.getVehicles();
+        for(int i = 0; i < vehicles.size(); i++) {
+            Vehicle v = vehicles.get(i);
+            String type_name = "UNKNOWN";
+            switch (v.getType()) {
+            case 'L':
+                type_name = "Terrestre";
+                break;
+            case 'S':
+                type_name = "Maritim";
+                break;
+            case 'A':
+                type_name = "Aeri";
+                break;
+            }
+            System.out.println(v.getId() + ") " + type_name);
         }
     }
 

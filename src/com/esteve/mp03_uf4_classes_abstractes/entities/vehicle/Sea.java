@@ -4,6 +4,11 @@ public class Sea extends Vehicle {
     protected int length, year, handle;
     protected String build_date;
 
+    public Sea(String id) {
+        super(id);
+        this.type = 'S';
+    }
+
     public int getLength() {
         return length;
     }
@@ -36,8 +41,4 @@ public class Sea extends Vehicle {
         this.build_date = build_date;
     }
 
-    public Sea(String id) {
-        super(id);
-        this.type = 'S';
-    }
 }

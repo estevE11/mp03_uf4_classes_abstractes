@@ -1,6 +1,12 @@
 package com.esteve.mp03_uf4_classes_abstractes.entities.vehicle;
 
 public class Land extends Vehicle{
+    protected int horsePower, issues, issuesCost;
+
+    public Land(String id) {
+        super(id);
+        this.type = 'L';
+    }
     public int getHorsePower() {
         return horsePower;
     }
@@ -23,12 +29,5 @@ public class Land extends Vehicle{
 
     public void setIssuesCost(int issuesCost) {
         this.issuesCost = issuesCost;
-    }
-
-    protected int horsePower, issues, issuesCost;
-
-    public Land(String id) {
-        super(id);
-        this.type = 'T';
     }
 }
