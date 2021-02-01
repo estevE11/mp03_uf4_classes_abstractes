@@ -1,5 +1,7 @@
 package com.esteve.mp03_uf4_classes_abstractes.entities.vehicle;
 
+import org.json.simple.JSONObject;
+
 public abstract class Vehicle {
     protected double minConsume;
     protected double currConsume;
@@ -18,6 +20,25 @@ public abstract class Vehicle {
         this.consumeByKm = 0;
         this.avgSpeed = 0;
         this.personNif = null;
+    }
+
+    public JSONObject toJson() {
+        return new JSONObject();
+    }
+
+    protected void createFromJson(JSONObject src) {
+
+    }
+
+    protected void baseFromJson(JSONObject src) {
+        this.minConsume = (double) src.get("minConsume");
+        this.currConsume = (double) src.get("currConsume");
+        this.maxCapacity = (double) src.get("maxCapacity");
+        this.consumeByKm = (double) src.get("consumeByKm");
+        this.avgSpeed = (double) src.get("avgSpeed");
+        this.type = ((String) src.get("type")).charAt(0);
+        this.id = (String) src.get("id");
+        this.personNif = (String) src.get("personNif");
     }
 
     public double getMinConsume() {
@@ -83,4 +104,5 @@ public abstract class Vehicle {
     public void setPersonId(String personId) {
         this.personNif = personId;
     }
+
 }

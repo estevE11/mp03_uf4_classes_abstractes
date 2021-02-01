@@ -1,6 +1,9 @@
 package com.esteve.mp03_uf4_classes_abstractes;
 
 import com.esteve.mp03_uf4_classes_abstractes.entities.person.Person;
+import com.esteve.mp03_uf4_classes_abstractes.entities.vehicle.Air;
+import com.esteve.mp03_uf4_classes_abstractes.entities.vehicle.Land;
+import com.esteve.mp03_uf4_classes_abstractes.entities.vehicle.Sea;
 import com.esteve.mp03_uf4_classes_abstractes.entities.vehicle.Vehicle;
 import com.esteve.mp03_uf4_classes_abstractes.utils.JSONUtils;
 import org.json.simple.JSONArray;
@@ -24,6 +27,29 @@ public class ListsManager {
             JSONObject json_person = (JSONObject) json_people.get(i);
             this.people.add(Person.createFromJSON(json_person));
         }
+
+        JSONArray json_vehicles = (JSONArray) src.get("vehicles");
+        for (int i = 0; i < json_vehicles.size(); i++) {
+            JSONObject json_vehicle = (JSONObject) json_vehicles.get(i);
+            char type = ((String) json_vehicle.get("type")).charAt(0);
+            switch(type) {
+                case 'L':
+                    Land l = new Land(null);
+                    l.createFromJson(json_vehicle);
+                    this.add(l);
+                    break;
+                case 'S':
+                    Sea s = new Sea(null);
+                    s.createFromJson(json_vehicle);
+                    this.add(s);
+                    break;
+                case 'A':
+                    Air a = new Air(null);
+                    a.createFromJson(json_vehicle);
+                    this.add(a);
+                    break;
+            }
+        }
     }
 
     public void saveToJson() {
@@ -33,6 +59,10 @@ public class ListsManager {
 
         for(Person p : this.people) {
             json_people.add(p.toJson());
+        }
+
+        for(Vehicle v : this.vehicles) {
+            json_vehicles.add(v.toJson());
         }
 
         toSave.put("vehicles", json_vehicles);

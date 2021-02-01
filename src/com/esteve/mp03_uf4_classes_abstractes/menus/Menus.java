@@ -43,6 +43,7 @@ public class Menus {
             }
 
         } while(ipt > 0);
+        System.out.println();
     }
 
     private void manageVehicles() {
@@ -66,6 +67,7 @@ public class Menus {
                     ipt = 0;
             }
         } while(ipt > 0);
+        System.out.println();
     }
 
     private void managePeople() {
@@ -89,6 +91,7 @@ public class Menus {
                     ipt = 0;
             }
         } while(ipt > 0);
+        System.out.println();
     }
 
     public void menuCreateVehicle() {
@@ -106,6 +109,7 @@ public class Menus {
                 this.createVehicle(ipt);
             }
         } while(ipt > 0);
+        System.out.println();
     }
 
     public void createVehicle(int type) {
@@ -188,6 +192,7 @@ public class Menus {
                 this.manager.add(a);
                 break;
         }
+        System.out.println();
     }
 
     public void menuCreatePerson() {
@@ -215,6 +220,7 @@ public class Menus {
             Person p = people.get(i);
             System.out.println((i+1) + ") " + p.getName() + " - " + (p.isAssigned() ? "A" : "No a") + "ssignat");
         }
+        System.out.println();
     }
 
     public void printVehicles() {
@@ -235,6 +241,7 @@ public class Menus {
             }
             System.out.println(v.getId() + ") " + type_name);
         }
+        System.out.println();
     }
 
 }
