@@ -35,6 +35,14 @@ public class Person {
         return res;
     }
 
+    public boolean link(Vehicle v) {
+        if(v.getPersonId() == null) {
+            v.setPersonId(this.nif);
+            this.assigned = true;
+        }
+        return this.assigned; // Aixi conseguim que la funcio retorni true si ha funciona correctement i fals si no.
+    }
+
     public String getName() {
         return name;
     }
