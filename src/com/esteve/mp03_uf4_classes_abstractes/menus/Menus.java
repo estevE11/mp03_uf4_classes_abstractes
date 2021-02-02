@@ -38,6 +38,9 @@ public class Menus {
                 case 2:
                     this.managePeople();
                     break;
+                case 3:
+                    this.menuLink();
+                    break;
                 default:
                     ipt = 0;
             }
@@ -251,7 +254,7 @@ public class Menus {
             for(int i = 0; i < unasPeople.size(); i++) {
                 System.out.println((i+1) + ") " + unasPeople.get(i).getName());
             }
-            System.out.print("0) Sortir");
+            System.out.println("0) Sortir");
             System.out.print("> ");
             ipt = sc.nextInt();
 
@@ -268,7 +271,7 @@ public class Menus {
             for(int i = 0; i < unasVehicles.size(); i++) {
                 System.out.println((i+1) + ") " + unasVehicles.get(i).getId());
             }
-            System.out.print("0) Sortir");
+            System.out.println("0) Sortir");
             System.out.print("> ");
             ipt = sc.nextInt();
 
