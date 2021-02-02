@@ -35,7 +35,15 @@ public class Sea extends Vehicle {
         this.length = (int)((long)src.get("length"));
         this.year = (int)((long)src.get("year"));
         this.handle = (int)((long)src.get("handle"));
-        this.build_date = (String) src.get("build_year");
+        this.build_date = (String) src.get("build_date");
+    }
+
+    public double calcConsume() {
+        String[] date = this.build_date.split("/");
+        int day = Integer.parseInt(date[0]);
+        int month = Integer.parseInt(date[1]);
+        int year = Integer.parseInt(date[2]);
+        return (this.minConsume + (this.currConsume/this.maxCapacity)*this.consumeByKm) + (this.length + this.handle + this.year) - (day+month+year);
     }
 
     public int getLength() {

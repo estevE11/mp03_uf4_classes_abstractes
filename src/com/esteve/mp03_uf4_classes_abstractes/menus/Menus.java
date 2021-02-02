@@ -161,8 +161,11 @@ public class Menus {
                 int handle = sc.nextInt();
                 System.out.print("Any flotació: ");
                 int year = sc.nextInt();
-                System.out.print("Any flotació: ");
-                String build_date = sc.nextLine();
+                String build_date;
+                do {
+                    System.out.print("Dats construció drassanes (dd/mm/yyyy): ");
+                    build_date = sc.nextLine();
+                } while(build_date.split("/").length != 3);
 
                 s = new Sea(id);
                 s.setMinConsume(minCons);
@@ -248,7 +251,7 @@ public class Menus {
                 break;
             }
 
-            System.out.println(v.getId() + ") " + type_name + " - " + v.getType() + " - " + (v.getPersonId() != null ?  (" amb " + v.getPersonId()) : ""));
+            System.out.println(v.getId() + ") " + type_name + " - " + v.getType() + " - " + (v.getPersonId() != null ?  (" amb " + v.getPersonId()) : "") + " CONSUM: " + v.calcConsume());
         }
         System.out.println();
     }

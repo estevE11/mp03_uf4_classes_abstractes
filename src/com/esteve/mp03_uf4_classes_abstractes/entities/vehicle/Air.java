@@ -33,6 +33,10 @@ public class Air extends Vehicle {
         this.workTime = (int)((long)src.get("workTime"));
     }
 
+    public double calcConsume() {
+        return (this.minConsume + (this.currConsume / this.maxCapacity) * this.consumeByKm) + (this.engines * this.workTime);
+    }
+
     public int getEngines() {
         return engines;
     }

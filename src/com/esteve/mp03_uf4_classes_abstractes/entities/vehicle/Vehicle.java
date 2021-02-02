@@ -41,6 +41,10 @@ public abstract class Vehicle {
         this.personNif = (String) src.get("personNif");
     }
 
+    public double calcConsume() {
+        return 0;
+    }
+
     public double getMinConsume() {
         return minConsume;
     }

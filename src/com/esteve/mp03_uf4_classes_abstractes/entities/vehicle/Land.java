@@ -34,6 +34,10 @@ public class Land extends Vehicle {
         this.issuesCost = (int)((long)src.get("issuesCost"));
     }
 
+    public double calcConsume() {
+        return this.minConsume * (this.currConsume/this.maxCapacity) * this.consumeByKm + (this.issues * this.issuesCost);
+    }
+
     public int getHorsePower() {
         return horsePower;
     }
