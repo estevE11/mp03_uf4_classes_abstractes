@@ -222,7 +222,7 @@ public class Menus {
         LinkedList<Person> people = this.manager.getPeople();
         for(int i = 0; i < people.size(); i++) {
             Person p = people.get(i);
-            System.out.println((i+1) + ") " + p.getName() + " - " + (p.isAssigned() ? "A" : "No a") + "ssignat" + (p.isAssigned() ? (" a ") : ""));
+            System.out.println((i+1) + ") " + p.getName() + " - " + (p.isAssigned() ? "A" : "No a") + "ssignat");
         }
         System.out.println();
     }
@@ -243,7 +243,8 @@ public class Menus {
                 type_name = "Aeri";
                 break;
             }
-            System.out.println(v.getId() + ") " + type_name + (v.getPersonId() != null ?  " amb " + v.getPersonId() : ""));
+
+            System.out.println(v.getId() + ") " + type_name + (v.getPersonId() != null ?  (" amb " + v.getPersonId()) : ""));
         }
         System.out.println();
     }
@@ -275,11 +276,12 @@ public class Menus {
             System.out.println("0) Sortir");
             System.out.print("> ");
             ipt = sc.nextInt();
+            if(ipt == 0) continue;
             if(ipt > unasVehicles.size() || ipt < 1) {
                 System.out.println("Numero incorrecte");
                 continue;
             }
-            if(p.link(unasVehicles.get(ipt-1))) System.out.println("La persona de nom " + p.getName() + " ha estat assignada a el vehicle amb id " + unasVehicles.get(ipt-1).getId());
+            if(p.link(unasVehicles.get(ipt-1))) System.out.println("La persona de nom " + p.getName() + "(NIF: " + p.getNif() +  ")" + " ha estat assignada a el vehicle amb id " + unasVehicles.get(ipt-1).getId());
             else System.out.println("Hi ha algut algun error!");
         } while(ipt > 0);
         System.out.println();
