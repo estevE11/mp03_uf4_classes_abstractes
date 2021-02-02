@@ -209,8 +209,12 @@ public class Menus {
         System.out.print("Nom: ");
         String name = sc.nextLine();
         res.setName(name);
-        System.out.print("Vehicle type: ");
-        char type = sc.nextLine().charAt(0);
+
+        char type;
+        do {
+            System.out.print("Especialitat (L : Terrestre, S: Maritim, A: Aeri): ");
+            type = sc.nextLine().charAt(0);
+        } while(type != 'L' && type != 'S'  && type != 'A');
         res.setEsp(type);
 
         this.manager.add(res);
@@ -222,7 +226,7 @@ public class Menus {
         LinkedList<Person> people = this.manager.getPeople();
         for(int i = 0; i < people.size(); i++) {
             Person p = people.get(i);
-            System.out.println((i+1) + ") " + p.getName() + " - " + (p.isAssigned() ? "A" : "No a") + "ssignat");
+            System.out.println((i+1) + ") " + p.getName() + " - " + p.getEsp() + " - " + (p.isAssigned() ? "A" : "No a") + "ssignat");
         }
         System.out.println();
     }
@@ -236,7 +240,7 @@ public class Menus {
             case 'L':
                 type_name = "Terrestre";
                 break;
-            case 'S':
+            case 'M':
                 type_name = "Maritim";
                 break;
             case 'A':
@@ -244,7 +248,7 @@ public class Menus {
                 break;
             }
 
-            System.out.println(v.getId() + ") " + type_name + (v.getPersonId() != null ?  (" amb " + v.getPersonId()) : ""));
+            System.out.println(v.getId() + ") " + type_name + " - " + v.getType() + " - " + (v.getPersonId() != null ?  (" amb " + v.getPersonId()) : ""));
         }
         System.out.println();
     }
